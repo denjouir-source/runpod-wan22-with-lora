@@ -1079,7 +1079,7 @@ def handler(job: Dict[str, Any]) -> Dict[str, Any]:
         prompt_payload["834"]["inputs"]["steps"] = steps
         prompt_payload["829"]["inputs"]["step"] = max(1, int(steps * 0.6))
         
-        if job_input.get("quality_steps"):
+    if job_input.get("quality_steps"):
         q_steps = int(job_input["quality_steps"])
         prompt_payload["569"]["inputs"]["value"] = q_steps
         prompt_payload["575"]["inputs"]["value"] = int(job_input.get("quality_split", q_steps // 2))
