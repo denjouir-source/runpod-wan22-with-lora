@@ -1037,7 +1037,7 @@ def handler(job: Dict[str, Any]) -> Dict[str, Any]:
         return {"error": "Missing required input: prompt"}
 
     progress(job, "Preparing inputs")
-    task_dir = f"/tmp/task_{uuid.uuid4()}"
+    task_dir = f"/ComfyUI/input/task_{uuid.uuid4()}"
     image_path, end_image_path = get_image_inputs(job_input, task_dir)
 
     ensure_support_assets(job)
