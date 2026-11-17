@@ -1078,8 +1078,17 @@ def handler(job: Dict[str, Any]) -> Dict[str, Any]:
     if "834" in prompt_payload:
         prompt_payload["834"]["inputs"]["steps"] = steps
         prompt_payload["829"]["inputs"]["step"] = max(1, int(steps * 0.6))
-        prompt_payload["829"]["inputs"]["step"] = max(1, int(steps * 0.6))
-
+        
+        if job_input.get("quality_steps"):
+        q_steps = int(job_input["quality_steps"])
+        prompt_payload["569"]["inputs"]["value"] = q_steps
+        prompt_payload["575"]["inputs"]["value"] = int(job_input.get("quality_split", q_steps // 2))
+        prompt_payload["570"]["inputs"]["cfg_scale_start"] = float(job_input.get("cfg_high", 2.0))
+        prompt_payload["570"]["inputs"]["cfg_scale_end"] = float(job_input.get("cfg_high", 2.0))
+        prompt_payload["570"]["inputs"]["end_percent"] = float(job_input.get("cfg_until", 0.01))
+        prompt_payload["279"]["inputs"]["strength_0"] = float(job_input.get("lightning_high", 1.0))
+        prompt_payload["553"]["inputs"]["strength_0"] = float(job_input.get("lightning_low", 1.0))
+        
     if end_image_path:
         prompt_payload["617"]["inputs"]["image"] = end_image_path
 
