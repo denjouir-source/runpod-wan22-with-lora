@@ -1078,6 +1078,7 @@ def handler(job: Dict[str, Any]) -> Dict[str, Any]:
     if "834" in prompt_payload:
         prompt_payload["834"]["inputs"]["steps"] = steps
         prompt_payload["829"]["inputs"]["step"] = max(1, int(steps * 0.6))
+        prompt_payload["829"]["inputs"]["step"] = max(1, int(steps * 0.6))
 
     if end_image_path:
         prompt_payload["617"]["inputs"]["image"] = end_image_path
